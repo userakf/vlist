@@ -1,13 +1,13 @@
 <template>
     <div class="infinite-list-container" ref="infiniteListRef" :style="{ height: data.maxVisibleHieght + 'px' }">
         <div :style="styleObj">
-            <Item :height="data.itemHeight" :value="it.value" :id='it.id' v-for="it in visibList" :key="it.id"/>
+            <Item :height="data.itemHeight" :value="it.value" :id='it.id' v-for="it in visibList" :key="it.id" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed,onMounted,ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { VlistConfig } from './index'
 import Item from './Item.vue'
 // 1.获取传入数据和参数配置
@@ -16,7 +16,7 @@ import Item from './Item.vue'
  * 父传参
  */
 const props = defineProps<{
-    data:VlistConfig
+    data: VlistConfig
 }>()
 // 2.根据配置计算最大显示个数
 
@@ -40,8 +40,8 @@ let endIdx = computed(() => {
  */
 const styleObj = computed(() => {
     return {
-        paddingTop:startIdx.value * props.data.itemHeight + 'px',
-        paddingBottom:(props.data.listCount - (endIdx.value + 1)) * props.data.itemHeight + 'px',
+        paddingTop: startIdx.value * props.data.itemHeight + 'px',
+        paddingBottom: (props.data.listCount - (endIdx.value + 1)) * props.data.itemHeight + 'px',
     }
 })
 
@@ -49,14 +49,14 @@ const styleObj = computed(() => {
 
 /** 渲染可视列表 */
 let visibList = computed(() => {
-  return props.data.list.slice(startIdx.value , endIdx.value)
+    return props.data.list.slice(startIdx.value, endIdx.value)
 })
 
 // 5.绑定滚动事件计算开始下标
 
 /** 滚动计算开始坐标 */
 onMounted(() => {
-    infiniteListRef.value?.addEventListener('scroll',function(){
+    infiniteListRef.value?.addEventListener('scroll', function () {
         startIdx.value = ~~(this.scrollTop / props.data.itemHeight)
     })
 })
@@ -64,8 +64,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.infinite-list-container{
+.infinite-list-container {
     overflow: scroll;
 }
-
 </style>
