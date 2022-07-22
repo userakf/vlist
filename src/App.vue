@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Axios from 'axios';
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import { VlistConfig } from './components/vlist/index';
 import Vlist from './components/vlist/index.vue'
 
@@ -18,7 +18,9 @@ async function getList(){
   dataConfig.listCount = data.length
   dataConfig.list = data
 }
-getList()
+onMounted(() => {
+  getList()
+})
 
 </script>
 
