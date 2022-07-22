@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
+import { useThrottleFn } from '../../hooks/core'
 import { VlistConfig } from './index'
 import Item from './Item.vue'
 // 1.获取传入数据和参数配置
@@ -53,10 +54,13 @@ let visibList = computed(() => {
 })
 
 // 5.绑定滚动事件计算开始下标
+// const throttledFn = useThrottleFn(function (this: any) {
+//     startIdx.value = ~~(this.scrollTop / props.data.itemHeight)
+// }, 500)
 
 /** 滚动计算开始坐标 */
 onMounted(() => {
-    infiniteListRef.value?.addEventListener('scroll', function () {
+    infiniteListRef.value?.addEventListener('scroll', function (this: any) {
         startIdx.value = ~~(this.scrollTop / props.data.itemHeight)
     })
 })
