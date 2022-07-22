@@ -12,7 +12,7 @@ let data = Mock.mock({
 
 export default [
     {
-        url:'/api/getUserInfo',
+        url:'/api/getVList',
         method:'get',
         response:() => (data.list)
     }

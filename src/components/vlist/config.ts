@@ -1,3 +1,5 @@
+import { ListItem } from "../../api/sys/model/vlistModel";
+
 /**
  * 虚拟列表配置参数
  */
@@ -10,13 +12,4 @@ export interface VlistConfig {
     maxVisibleHieght:number,
     // 数据真实高度
     listCount:number
-}
-/**
- * 虚拟列表每一项数据
- */
-export interface ListItem {
-    // id 
-    id: number,
-    // 内容
-    value: string
 }
