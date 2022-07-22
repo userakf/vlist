@@ -14,7 +14,7 @@ export default [
     {
         url:'/api/getUserInfo',
         method:'get',
-        response:() => (data)
+        response:() => (data.list)
     }
 ] as MockMethod[]
 
