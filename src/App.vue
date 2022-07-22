@@ -10,7 +10,7 @@ const dataConfig:VlistConfig = reactive({
   list:[],
   itemHeight:100,
   maxVisibleHieght:500,
-  listCount:46
+  listCount:0
 })
 
 async function getList(){
