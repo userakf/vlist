@@ -8,12 +8,12 @@ export default defineConfig({
   plugins: [
     vue(),
     viteMockServe({
-      mockPath: './src/api/mock/source', // 解析，路径可根据实际变动
+      mockPath: './mock/source', // 解析，路径可根据实际变动
       localEnabled: true, // 开发环境
       prodEnabled: false, // 生产环境设为true，也可以根据官方文档格式
       injectCode:
         `
-      import { setupProdMockServer } from './src/api/mock';
+      import { setupProdMockServer } from './mock';
       setupProdMockServer(); 
       `,
       watchFiles: true, // 监听文件内容变更
